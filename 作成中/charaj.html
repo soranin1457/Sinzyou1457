@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="ja" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.js"></script>
+    <script src="js/charao.js" charset="utf-8"></script>
+    <link rel="stylesheet" href="css/characs.css">
+  </head>
+  <body>
+    <div class="post">
+      <textarea id="json" rows="8" cols="80">aaa</textarea>
+      <details>
+          <summary>画像を添付する</summary>
+          <input type="file" accept="image/*" name="img">
+      </details>
+      <input type="button" name="" value="送信" onclick="getjson()">
+    </div>
+      <div class="canvas_con">
+        <canvas class="canv" id="stats" width="100" height="50"></canvas>
+      </div>
+  </body>
+</html>
