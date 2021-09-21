@@ -12,12 +12,25 @@
       <textarea id="json" rows="8" cols="80">aaa</textarea>
       <details>
           <summary>画像を添付する</summary>
-          <input type="file" accept="image/*" name="img">
+          <input type="file" accept="image/*" onchange="setImage(this)" value="">
       </details>
       <input type="button" name="" value="送信" onclick="getjson()">
     </div>
+    <div class="card">
       <div class="canvas_con">
-        <canvas class="canv" id="stats" width="100" height="50"></canvas>
+        <canvas class="canv" id="stats" width="100" height="150"></canvas>
       </div>
+      <div class="img">
+        <img id="pre" width="290" height="300" src="photo/キャラでか.bmp"
+         onchange="image(this);"
+        alt="写真">
+      </div>
+      <div class="status">
+        <p >HP <span id="HP"></span></p>
+        <p >MP <span id="MP"></span></p>
+        <p >SAN <span id="SAN"></span></p>
+      </div>
+    </div>
+
   </body>
 </html>
