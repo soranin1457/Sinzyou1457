@@ -4,6 +4,7 @@ console.log("確認");
 var STR = 0; var CON = 0; var POW = 0; var DEX = 0;
 var APP = 0; var SIZ = 0; var INT = 0; var EDU = 0;
 var HP = 0; var MP = 0; var SAN = 0;
+var Name = "";
 
 //ステータスの表示
 function getjson(){
@@ -24,6 +25,8 @@ function getjson(){
   HP = json[0].NP9;
   MP = json[0].NP10;
   SAN = json[0].NP11;
+  Name = json[0].pc_name;
+  console.log(Name);
 
   hp_string.innerHTML = HP;
   mp_string.innerHTML = MP;
@@ -37,10 +40,10 @@ function getjson(){
           datasets:[{
             label: "",
             data: [STR, CON, POW, DEX, APP, SIZ, INT, EDU],
-            backgroundColor: 'RGBA(115,255,25, 0.5)',
-            borderColor: 'RGBA(115,255,25, 1)',
+            backgroundColor: 'RGBA(140,230,168, 0.7)',
+            borderColor: 'RGBA(168,140,230, 1)',
             borderWidth: 1,
-            pointBackgroundColor: 'RGB(46,106,177)'
+            pointBackgroundColor: 'RGB(230,168,140)'
           }]
         },
         options:{

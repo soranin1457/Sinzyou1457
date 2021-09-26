@@ -4,6 +4,9 @@
   height: 500px;
   border: solid 3px;
   border-radius: 30px;
+  background-image: url(../photo/名刺背景.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 .img{
