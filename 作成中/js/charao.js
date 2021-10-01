@@ -1,10 +1,57 @@
 
 console.log("確認");
 
+
+
+var json;
+var flag = 0;
+
 var STR = 0; var CON = 0; var POW = 0; var DEX = 0;
 var APP = 0; var SIZ = 0; var INT = 0; var EDU = 0;
 var HP = 0; var MP = 0; var SAN = 0;
 var Name = "";
+
+function view_ginou(){
+  let bsname = ['回避','キック','組み付き','こぶし','頭突き','投擲','マーシャルアーツ','拳銃','サブマシンガン','ショットガン','マシンガン','ライフル']
+  let fsname = [ '応急手当','鍵開け','隠す','隠れる','聞き耳','忍び歩き','写真術','精神分析','追跡','登攀','図書館','目星'];
+
+  let asname = ['運転 '+json[0].unten_bunya,'機械修理','重機械操作','乗馬','水泳','製作 '+json[0].seisaku_bunya,'操縦 '+json[0].main_souju_norimono,'跳躍','電気修理','ナビゲート','変装'];
+
+  let csname = ['言いくるめ','信用','説得','値切り','母国語 '+json[0].mylang_name];
+
+  let ksname =  ['医学','オカルト','化学','クトゥルフ神話','芸術 '+json[0].geijutu_bunya,'経理','考古学','コンピューター','心理学','人類学','生物学','地質学','電子工学','天文学','博物学','物理学','法律','薬学','歴史'];
+  /*var test = document.getElementById("HP");
+  test.innerHTML = "<h1 id='koko'>変更</h1>"
+  test = document.getElementById("koko");
+  test.innerHTML = "<h1>変更</h1>"*/
+  var ginou = document.getElementById("gi");
+
+  var id_num = -1;
+
+  var syoki =
+  json[0].TBAD.concat(json[0].TFAD,json[0].TAAD,json[0].TCAD,json[0].TKAD);
+  console.log(syoki);
+  var genzai =
+  json[0].TBAP.concat(json[0].TFAP,json[0].TAAP,json[0].TCAP,json[0].TKAP);
+  console.log(genzai);
+  var gname =
+  bsname.concat(fsname,asname,csname,ksname);
+  console.log(gname);
+
+  for (var i = 0; i < 58; i++) {
+    if(i === 32){
+
+    }
+    if (syoki[i] < genzai[i]) {
+      var new_element = document.createElement('li');
+      id_num = genzai[i];
+      new_element.textContent = gname[i] + "  " + id_num;
+      ginou.appendChild(new_element);
+
+    }
+  }
+
+}
 
 //ステータスの表示
 function getjson(){
@@ -12,8 +59,10 @@ function getjson(){
   var hp_string = document.getElementById('HP');
   var mp_string = document.getElementById('MP');
   var san_string = document.getElementById('SAN');
+  var name_view = document.getElementById('name_view');
+
   var json_obj = '[' + json_string + ']';
-  var json = JSON.parse(json_obj);
+  json = JSON.parse(json_obj);
   STR = json[0].NP1;
   CON = json[0].NP2;
   POW = json[0].NP3;
@@ -31,6 +80,7 @@ function getjson(){
   hp_string.innerHTML = HP;
   mp_string.innerHTML = MP;
   san_string.innerHTML = SAN;
+  name_view.innerHTML = "<span>" + Name + "</span>";
 
   var ctx = document.getElementById("stats");
   var myRadarChart = new Chart(ctx, {
@@ -61,7 +111,6 @@ function getjson(){
     });
 }
 
-console.log("ここまで");
 function setImage(obj) {
   console.log("動作");
   var fileReader = new FileReader();

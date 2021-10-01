@@ -16,19 +16,41 @@
       </details>
       <input type="button" name="" value="送信" onclick="getjson()">
     </div>
+    <div id="cardview">
+      <div class="changeleft">
+        <input type="button" value="⇦" onclick="view_ginou()">
+      </div>
+      <div class="card">
+        <div class="canvas_con">
+          <canvas class="canv" id="stats" width="100" height="150"></canvas>
+        </div>
+        <div class="name_tag">
+          <p id="name_view"><span>名前</span></p>
+        </div>
+        <div class="img">
+          <img id="pre" height="300" src="photo/キャラでか.bmp"
+           onchange="image(this);"
+          alt="写真">
+        </div>
+        <div class="status">
+          <p >HP <span id="HP"></span></p>
+          <p >MP <span id="MP"></span></p>
+          <p >SAN <span id="SAN"></span></p>
+        </div>
+      </div>
+      <div class="changerihgt">
+        <input type="button" value="⇨">
+      </div>
+    </div>
+
     <div class="card">
-      <div class="canvas_con">
-        <canvas class="canv" id="stats" width="100" height="150"></canvas>
-      </div>
-      <div class="img">
-        <img id="pre" width="290" height="300" src="photo/キャラでか.bmp"
-         onchange="image(this);"
-        alt="写真">
-      </div>
-      <div class="status">
-        <p >HP <span id="HP"></span></p>
-        <p >MP <span id="MP"></span></p>
-        <p >SAN <span id="SAN"></span></p>
+      <div id="ginou">
+        <div id="ginouview">
+          <p >取得技能</p>
+          <ul id="gi">
+
+          </ul>
+        </div>
       </div>
     </div>
 
