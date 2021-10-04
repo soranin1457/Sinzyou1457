@@ -1,7 +1,10 @@
 
 console.log("確認");
 
+var ginouHTML = '<div id="ginou"><div id="ginouview"><p>取得技能</p> <ul id="gi"></ul></div></div>';
+var cardHTML = '<div class="canvas_con"><canvas class="canv" id="stats" width="100" height="150"></canvas></div><div class="name_tag"><p id="name_view"><span>名前</span></p></div><div class="img"><img id="pre" height="300" src="photo/キャラでか.bmp"onchange="image(this);"alt="写真"></div><div class="status"> <p >HP <span id="HP"></span></p> <p >MP <span id="MP"></span></p> <p >SAN <span id="SAN"></span></p></div>'
 
+var html2;
 
 var json;
 var flag = 0;
@@ -10,6 +13,26 @@ var STR = 0; var CON = 0; var POW = 0; var DEX = 0;
 var APP = 0; var SIZ = 0; var INT = 0; var EDU = 0;
 var HP = 0; var MP = 0; var SAN = 0;
 var Name = "";
+
+function btn_change(){
+  if (flag == 0) {
+    html2 = document.getElementById("card2");
+    html2.innerHTML = cardHTML;
+    if (json === null) {
+      console.log("aa");
+    }
+    cardshow();
+    flag = 1;
+  } else {
+    html2 = document.getElementById("card2");
+    html2.innerHTML = ginouHTML;
+    if (json === null) {
+      console.log("aa");
+    }
+    view_ginou();
+    flag = 0;
+  }
+}
 
 function view_ginou(){
   let bsname = ['回避','キック','組み付き','こぶし','頭突き','投擲','マーシャルアーツ','拳銃','サブマシンガン','ショットガン','マシンガン','ライフル']
@@ -20,10 +43,10 @@ function view_ginou(){
   let csname = ['言いくるめ','信用','説得','値切り','母国語 '+json[0].mylang_name];
 
   let ksname =  ['医学','オカルト','化学','クトゥルフ神話','芸術 '+json[0].geijutu_bunya,'経理','考古学','コンピューター','心理学','人類学','生物学','地質学','電子工学','天文学','博物学','物理学','法律','薬学','歴史'];
-  /*var test = document.getElementById("HP");
-  test.innerHTML = "<h1 id='koko'>変更</h1>"
-  test = document.getElementById("koko");
-  test.innerHTML = "<h1>変更</h1>"*/
+
+
+  var html2 = document.getElementById("card2");
+  html2.innerHTML = ginouHTML;
   var ginou = document.getElementById("gi");
 
   var id_num = -1;
@@ -45,7 +68,7 @@ function view_ginou(){
     if (syoki[i] < genzai[i]) {
       var new_element = document.createElement('li');
       id_num = genzai[i];
-      new_element.textContent = gname[i] + "  " + id_num;
+      new_element.textContent = gname[i] + " " + id_num;
       ginou.appendChild(new_element);
 
     }
@@ -56,13 +79,21 @@ function view_ginou(){
 //ステータスの表示
 function getjson(){
   var json_string = document.getElementById('json').value;
+
+
+  var json_obj = '[' + json_string + ']';
+  json = JSON.parse(json_obj);
+  btn_change();
+}
+
+function cardshow(){
   var hp_string = document.getElementById('HP');
   var mp_string = document.getElementById('MP');
   var san_string = document.getElementById('SAN');
   var name_view = document.getElementById('name_view');
+  var html2 = document.getElementById("card2");
+  html2.innerHTML = cardHTML;
 
-  var json_obj = '[' + json_string + ']';
-  json = JSON.parse(json_obj);
   STR = json[0].NP1;
   CON = json[0].NP2;
   POW = json[0].NP3;
