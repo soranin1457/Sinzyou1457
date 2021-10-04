@@ -5,7 +5,6 @@
 
 .changeleft, .changerihgt{
   margin-top: 250px;
-  background-color: #555;
 }
 
 .changeleft{
@@ -57,4 +56,15 @@ img{
 
 #ginou p{
   margin-left: 15px;
+}
+
+ul{
+  list-style: none;
+	padding-left: 0;
+	display: flex;
+	flex-wrap: wrap;
+}
+
+li{
+  width: 50%;
 }
