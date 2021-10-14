@@ -13,11 +13,15 @@ var STR = 0; var CON = 0; var POW = 0; var DEX = 0;
 var APP = 0; var SIZ = 0; var INT = 0; var EDU = 0;
 var HP = 0; var MP = 0; var SAN = 0;
 var Name = "";
+var img;
 
 function btn_change(){
   if (flag == 0) {
     html2 = document.getElementById("card2");
     html2.innerHTML = cardHTML;
+    if (img != undefined){
+      setImage2();
+    }
     if (json === null) {
       console.log("aa");
     }
@@ -87,12 +91,12 @@ function getjson(){
 }
 
 function cardshow(){
+  var html2 = document.getElementById("card2");
+  html2.innerHTML = cardHTML;
   var hp_string = document.getElementById('HP');
   var mp_string = document.getElementById('MP');
   var san_string = document.getElementById('SAN');
   var name_view = document.getElementById('name_view');
-  var html2 = document.getElementById("card2");
-  html2.innerHTML = cardHTML;
 
   STR = json[0].NP1;
   CON = json[0].NP2;
@@ -143,10 +147,20 @@ function cardshow(){
 }
 
 function setImage(obj) {
+  img = obj;
   console.log("動作");
   var fileReader = new FileReader();
 	fileReader.onload = (function() {
 		document.getElementById('pre').src = fileReader.result;
 	});
-	fileReader.readAsDataURL(obj.files[0]);
+	fileReader.readAsDataURL(img.files[0]);
+}
+
+function setImage2() {
+  console.log("動作");
+  var fileReader = new FileReader();
+	fileReader.onload = (function() {
+		document.getElementById('pre').src = fileReader.result;
+	});
+	fileReader.readAsDataURL(img.files[0]);
 }
